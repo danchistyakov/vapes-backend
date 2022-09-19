@@ -1,7 +1,7 @@
 # This workflow will do a clean installing of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: deploy server blog
+name: Vapes backend
 on:
   push:
     branches: [ master ]
@@ -22,7 +22,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
       - run: yarn
-      - run: yarn build --if-present
+      - run: yarn build
       - name: Deploy to Vercel
         run: yarn deploy --token ${VERCEL_TOKEN} --prod
         env:
